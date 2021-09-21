@@ -5,7 +5,7 @@ if (itemtypenames == undefined)
     "Medium Caliber Main Gun",
     "Large Caliber Main Gun",
     "Secondary Gun",
-    "Anti-Aircraft Gun", 
+    "Anti-Aircraft Gun",
     "Anti-Aircraft Shell",
     "Armor Piercing Shell",
     "Torpedos & Submarine",
@@ -20,8 +20,8 @@ if (itemtypenames == undefined)
     "Extra Armor",
     "Land-Based Attack Aircraft",
     "Supply Transport Container",
-	"Anti-Air Fire Director",
-	"Land-based Fighter",
+    "Anti-Air Fire Director",
+    "Land-based Fighter",
   ];
 
 // Id, Name, Rarity, Internal Rarity, Type, Break Materials[, is AA]
