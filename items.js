@@ -25,7 +25,7 @@ if (itemtypenames == undefined)
   ];
 
 // Id, Name, Rarity, Internal Rarity, Type, Break Materials[, is AA]
-var items = [
+var itemlist = [
   [1, "12cm単装砲", 1, 0, 0, [0, 1, 1, 0]],
   [2, "12.7cm連装砲", 1, 0, 0, [0, 1, 2, 0]],
   [3, "10cm連装高角砲", 2, 1, 0, [0, 1, 3, 0], true],
@@ -103,6 +103,17 @@ var items = [
 ];
 
 var materialNames = ["Fuel", "Ammunition", "Steel", "Bauxite"];
+
+var items = [];
+var k = 0;
+for (var j = 0; j < itemtypenames.length; ++j) {
+  for (var i = 0; i < itemlist.length; ++i) {
+    if (itemlist[i][4] == j) {
+      items[k] = itemlist[i];
+      k++;
+    }
+  }
+}
 
 function developResult(id, percentage, materials, hqlevel) {
   this.id = id;
