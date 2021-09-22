@@ -75,7 +75,7 @@ function updateGen() {
 	var hq = $("[name=hqlevel_]")[0].value
 	results = []
 	for (var secretary = 0; secretary < 3; ++secretary) {
-		for (var layer = 0; layer < 4; ++layer) {
+		for (var layer = 0; layer < 3; ++layer) {
 			var materials = mins.slice(0)
 			for (var i = 0; i < 4; ++i) {
 				if (layers.indexOf(i) < layers.indexOf(layer)) {
