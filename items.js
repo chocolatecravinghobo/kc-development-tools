@@ -196,7 +196,6 @@ function developResult(id, percentage, materials, hqlevel) {
   this.percentage = percentage;
   this.successful = true;
   for (let j = 0; j < items.length; ++j) {
-    // console.log(items[j][0],'developResult');
     if (items[j][0] == id) {
       if (items[j][3] * 10 > hqlevel) this.successful = false;
       for (let i = 0; i < 4; ++i) {

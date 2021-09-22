@@ -56,8 +56,8 @@ function createList() {
 $(createList)
 $(function() { $("[name=hqlevel_]")[0].onchange = updateGen })
 
-var layers = [0, 2, 1, 3]
-var results
+const layers = [0, 2, 1 ,3]
+let results
 
 function updateGen() {
 	if (selectedItems.length == 0) {
@@ -65,19 +65,19 @@ function updateGen() {
 		$("#results")[0].innerHTML = getString("No Result")
 		return
 	}
-	var mins = [10, 10, 10, 10]
-	if (selectedItems.indexOf(59) != -1) mins = [240, 260, 10, 250]
-	for (var i = 0; i < selectedItems.length; ++i) {
-		for (var j = 0; j < 4; ++j) {
+	let mins = [10, 10, 10, 10]
+	if (selectedItems.find(element => element == 70)) mins = [240, 260, 10, 250]
+	for (let i = 0; i < selectedItems.length; ++i) {
+		for (let j = 0; j < 4; ++j) {
 			if (items[selectedItems[i]][5][j] * 10 > mins[j]) mins[j] = items[selectedItems[i]][5][j] * 10
 		}
 	}
-	var hq = $("[name=hqlevel_]")[0].value
+	let hq = $("[name=hqlevel_]")[0].value
 	results = []
-	for (var secretary = 0; secretary < 3; ++secretary) {
-		for (var layer = 0; layer < 3; ++layer) {
-			var materials = mins.slice(0)
-			for (var i = 0; i < 4; ++i) {
+	for (let secretary = 0; secretary < 3; ++secretary) {
+		for (let layer = 0; layer < 4; ++layer) {
+			let materials = mins.slice(0)
+			for (let i = 0; i < 4; ++i) {
 				if (layers.indexOf(i) < layers.indexOf(layer)) {
 					if (materials[i] >= materials[layer]) {
 						materials[layer] = materials[i] + 1
@@ -205,7 +205,10 @@ function sortResult() {
 
 function analysis(expect, result) {
 	var total = 0
-	var rest = expect.slice(0)
+	let rest = expect.slice(0)
+	for( let i = 0;i < expect.length; ++i){
+		rest[i]=items[expect[i]][0];
+	}
 	for (var i = 0; i < result[0].length; ++i) {
 		if (rest.indexOf(result[0][i].id) != -1) {
 			rest.splice(rest.indexOf(result[0][i].id), 1)

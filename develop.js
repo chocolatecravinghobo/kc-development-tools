@@ -88,13 +88,13 @@ var developMap = [//炮战（油钢，弹，铝），水雷（油钢，弹，铝
 
 var developList = [
   [
-    [],[],[],
+    [],[],[],[]
   ],
   [
-    [],[],[],
+    [],[],[],[]
   ],
   [
-    [],[],[],
+    [],[],[],[]
   ],
 ];
 
@@ -106,12 +106,15 @@ for (let i = 0; i < 3; ++i) {
       developList[i][j][k][1]=developMap[k][(i+1)*(j+1)];
     }
   }
+  developList[i][3]=developList[i][2];
+  developList[i][2]=developList[i][0];
 }
 
+
 //fuel, ammo, steel, baux 油，彈，鋼，鋁
-//secretary 秘書艦開發池 00水雷系 01炮戰系 02航母系
-//layer 資源開發池 0油 1彈 2鋼 3鋁 實際油鋼池相同 改为2铝 0油鋼 1彈
-//isitaly 是否為意大利
+//secretary 秘書艦開發池 00水雷系 01炮戰系 02航母系 改为 00炮戰系 01水雷系 02航母系  
+//layer 資源開發池 0油 1彈 2鋼 3鋁 
+//isitaly 是否為意大利 
 //hqlevel 司令部等級
 
 function develop(fuel, ammo, steel, baux, secretary, isitaly, hqlevel) {
@@ -122,10 +125,10 @@ function develop(fuel, ammo, steel, baux, secretary, isitaly, hqlevel) {
   isitaly = isitaly != 0;
   baux = parseInt(baux);
   hqlevel = parseInt(hqlevel);
-  var layer = 0,
+  let layer = 0,
     max = fuel;
   if (steel > max) {
-    layer = 0; 
+    layer = 2; 
     max = steel;
   }
   if (ammo > max) {
@@ -133,41 +136,48 @@ function develop(fuel, ammo, steel, baux, secretary, isitaly, hqlevel) {
     max = ammo;
   }
   if (baux > max) {
-    layer = 2;
+    layer = 3;
     max = baux;
   }
-  var list = developList[secretary][layer].deepCopy();
+  let list = developList[secretary][layer].deepCopy();
   if (
     secretary == 2 &&
-    (layer == 1 || layer == 2) &&
+    (layer == 1 || layer == 3) &&
     fuel >= 240 &&
     ammo >= 260 &&
     baux >= 250
   ) {
-    for (var i = 0; i < list.length; ++i) {
-      if (items[list[i][0]][0] == 21) list[i][1] -= 2;
-      if (items[list[i][0]][0] == 23) list[i][1] -= 2;
-      if (items[list[i][0]][0] == 24) list[i][1] -= 2;
-      if (items[list[i][0]][0] == 25) list[i][1] -= 2;
-      if (list[i][1] <= 0) {
-        list.splice(i, 1);
-        --i;
-      }
+    for (let i = 0; i < list.length; ++i) {
+      if (list[i][0]==21) list[i][1] -= 2;
+      if (list[i][0]==23) list[i][1] -= 2;
+      if (list[i][0]==24) list[i][1] -= 2;
+      if (list[i][0]==25) list[i][1] -= 2;
+      if (list[i][0]==168) list[i][1] += 8;
+      // if (list[i][1] <= 0) {
+      //   list.splice(i, 1);
+      //   --i;
+      // }
     }
-    list.push([59, 8]);
-    list.sort(listSort);
+    // list.push([59, 8]);
+    // list.sort(listSort);
   }
-  if (isitaly && layer == 2) {
-    for (var i = 0; i < list.length; ++i) {
-      if (items[list[i][0]][0] == 25) list[i][1] -= 2;
-      if (items[list[i][0]][0] == 22 && secretary == 1) list[i][1] -= 2;
-      if (list[i][1] <= 0) {
+  // if (isitaly && layer == 2) {
+  //   for (var i = 0; i < list.length; ++i) {
+  //     if (items[list[i][0]][0] == 25) list[i][1] -= 2;
+  //     if (items[list[i][0]][0] == 22 && secretary == 1) list[i][1] -= 2;
+  //     if (list[i][1] <= 0) {
+  //       list.splice(i, 1);
+  //       --i;
+  //     }
+  //   }
+  //   list.push([44, secretary == 1 ? 4 : 2]);
+  //   list.sort(listSort);
+  // }
+  for (let i = 0; i < list.length; ++i) {
+    if (list[i][1] <= 0){
         list.splice(i, 1);
         --i;
-      }
     }
-    list.push([44, secretary == 1 ? 4 : 2]);
-    list.sort(listSort);
   }
   var succ = [],
     fail = [];
