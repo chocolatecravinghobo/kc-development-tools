@@ -99,7 +99,21 @@ function updateGen() {
         }
       }
       for (var isitaly = 99; isitaly < 111; ++isitaly) {
-        if (secretary == 2 && isitaly == 110) continue;
+        if (
+          secretary != 1 &&
+          (isitaly == 100 || isitaly == 107 || isitaly == 108 || isitaly == 109)
+        )
+          continue;
+        if (secretary != 0 && (isitaly == 101 || isitaly == 105)) continue;
+        if (
+          secretary != 2 &&
+          (isitaly == 102 ||
+            isitaly == 103 ||
+            isitaly == 104 ||
+            isitaly == 106 ||
+            isitaly == 110)
+        )
+          continue;
         var result = new analysis(
           selectedItems.slice(0),
           develop(
@@ -160,8 +174,7 @@ function display() {
       $("[name=ammu]")[0].value = this.input[0][1];
       $("[name=steel]")[0].value = this.input[0][2];
       $("[name=baux]")[0].value = this.input[0][3];
-      $("[name=secretary]")[0].value =
-        (this.input[2] ? "1" : "0") + this.input[1];
+      $("[name=secretary]")[0].value = this.input[2];
       $("[name=hqlevel]")[0].value = this.input[3];
       updateSim();
       $("[href=#sim]")[0].click();
