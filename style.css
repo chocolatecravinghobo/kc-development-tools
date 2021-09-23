@@ -178,6 +178,8 @@ button:not(.selected) {
 .type16 { background: #997EAE; }
 .type17 { background: #66CC77; }
 .type18 { background: #A0A0A0; }
+.type19 { background: #0a8f36; }
+.type20 { background: #66CC77; }
 
 button.type0.selected { border: 2px inset #D15B5B; }
 button.type1.selected { border: 2px inset #CC3D3D; }
