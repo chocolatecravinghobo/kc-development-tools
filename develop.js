@@ -103,7 +103,7 @@ for (let i = 0; i < 3; ++i) {
     for( let k = 0;k < itemlist.length; ++k){
       developList[i][j][k]=[];
       developList[i][j][k][0]=developMap[k][0];
-      developList[i][j][k][1]=developMap[k][(i+1)*(j+1)];
+      developList[i][j][k][1]=developMap[k][(i*3)+j+1];
     }
   }
   developList[i][3]=developList[i][2];

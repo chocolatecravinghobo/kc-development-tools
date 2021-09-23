@@ -170,10 +170,15 @@ function display() {
 			tr.appendChild(td)
 		}
 		tbody.appendChild(tr)
+		let number
 		for (var j = 0; j < results[i].details.length; ++j) {
 			tr = document.createElement("tr")
 			td = document.createElement("td")
-			td.appendChild(document.createTextNode(items[results[i].details[j][0]][1]))
+			for(let k = 0; k< items.length; ++k ){
+				if(results[i].details[j][0]==items[k][0])
+				number=k;
+			}
+			td.appendChild(document.createTextNode(items[number][1]))
 			tr.appendChild(td)
 			td = document.createElement("td")
 			td.appendChild(document.createTextNode(results[i].details[j][1] + "%"))
@@ -209,6 +214,7 @@ function analysis(expect, result) {
 	for( let i = 0;i < expect.length; ++i){
 		rest[i]=items[expect[i]][0];
 	}
+	let expectid=rest.slice(0)
 	for (var i = 0; i < result[0].length; ++i) {
 		if (rest.indexOf(result[0][i].id) != -1) {
 			rest.splice(rest.indexOf(result[0][i].id), 1)
@@ -226,8 +232,8 @@ function analysis(expect, result) {
 	this.expected = [rnd(result[3][0][0] * 100 / total), rnd(result[3][0][1] * 100 / total), rnd(result[3][0][2] * 100 / total), rnd(result[3][0][3] * 100 / total), rnd((100 - this.fail) / total)]
 	this.details = []
 	for (var i = 0; i < result[0].length; ++i) {
-		if (expect.indexOf(result[0][i].id) != -1) {
-			this.details[expect.indexOf(result[0][i].id)] = [result[0][i].id, result[0][i].percentage, rnd(result[3][0][0] * 100 / result[0][i].percentage), rnd(result[3][0][1] * 100 / result[0][i].percentage), rnd(result[3][0][2] * 100 / result[0][i].percentage), rnd(result[3][0][3] * 100 / result[0][i].percentage), rnd((100 - this.fail) / result[0][i].percentage)]
+		if (expectid.indexOf(result[0][i].id) != -1) {
+			this.details[expectid.indexOf(result[0][i].id)] = [result[0][i].id, result[0][i].percentage, rnd(result[3][0][0] * 100 / result[0][i].percentage), rnd(result[3][0][1] * 100 / result[0][i].percentage), rnd(result[3][0][2] * 100 / result[0][i].percentage), rnd(result[3][0][3] * 100 / result[0][i].percentage), rnd((100 - this.fail) / result[0][i].percentage)]
 		}
 	}
 }
