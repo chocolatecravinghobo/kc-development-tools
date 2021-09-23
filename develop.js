@@ -9,7 +9,8 @@ Array.prototype.deepCopy = function () {
   return temp;
 };
 
-var developMap = [//炮战（油钢，弹，铝），水雷（油钢，弹，铝），航母（油钢，弹，铝）
+var developMap = [
+  //炮战（油钢，弹，铝），水雷（油钢，弹，铝），航母（油钢，弹，铝）
   [1, 4, 0, 0, 6, 2, 2, 2, 2, 0],
   [2, 2, 0, 0, 1, 4, 2, 2, 2, 0],
   [3, 2, 0, 0, 6, 4, 2, 8, 8, 0],
@@ -87,34 +88,38 @@ var developMap = [//炮战（油钢，弹，铝），水雷（油钢，弹，铝
 ];
 
 var developList = [
-  [
-    [],[],[],[]
-  ],
-  [
-    [],[],[],[]
-  ],
-  [
-    [],[],[],[]
-  ],
+  [[], [], [], []],
+  [[], [], [], []],
+  [[], [], [], []],
 ];
 
 for (let i = 0; i < 3; ++i) {
   for (let j = 0; j < 3; ++j) {
-    for( let k = 0;k < itemlist.length; ++k){
-      developList[i][j][k]=[];
-      developList[i][j][k][0]=developMap[k][0];
-      developList[i][j][k][1]=developMap[k][(i*3)+j+1];
+    for (let k = 0; k < itemlist.length; ++k) {
+      developList[i][j][k] = [];
+      developList[i][j][k][0] = developMap[k][0];
+      developList[i][j][k][1] = developMap[k][i * 3 + j + 1];
     }
   }
-  developList[i][3]=developList[i][2];
-  developList[i][2]=developList[i][0];
+  developList[i][3] = developList[i][2];
+  developList[i][2] = developList[i][0]; //油钢池实际相同
 }
 
-
 //fuel, ammo, steel, baux 油，彈，鋼，鋁
-//secretary 秘書艦開發池 00水雷系 01炮戰系 02航母系 改为 00炮戰系 01水雷系 02航母系  
-//layer 資源開發池 0油 1彈 2鋼 3鋁 
-//isitaly 是否為意大利 
+//secretary 秘書艦開發池 0炮戰系 1水雷系 2航母系
+//layer 資源開發池 0油 1彈 2鋼 3鋁
+//isitaly 特殊秘书舰补正
+// 100 Maestrale/Grecale/Libeccio/Scirocco 及其改造形态
+// 101 Littorio(Italia)/Roma/Zara/Pola 及其改造形态
+// 102 伊势改/伊势改二/日向改/日向改二
+// 103 日向改/日向改二
+// 104 Ark Royal 及其改造形态
+// 105 Warspite/Nelson 及其改造形态
+// 106 Commandant Teste 及其改造形态
+// 107 Z1/Z3 及其改造形态
+// 108 秋月/照月/凉月/初月 及其改造形态
+// 109 阿贺野/能代/矢矧/酒匂 及其改造形态
+// 110 Saratoga/Hornet 及其改造形态
 //hqlevel 司令部等級
 
 function develop(fuel, ammo, steel, baux, secretary, isitaly, hqlevel) {
@@ -122,13 +127,15 @@ function develop(fuel, ammo, steel, baux, secretary, isitaly, hqlevel) {
   ammo = parseInt(ammo);
   steel = parseInt(steel);
   secretary = parseInt(secretary);
-  isitaly = isitaly != 0;
+  isitaly = parseInt(isitaly);
+  if (isitaly < 100) isitaly = 0;
+  // isitaly = isitaly != 0;
   baux = parseInt(baux);
   hqlevel = parseInt(hqlevel);
   let layer = 0,
     max = fuel;
   if (steel > max) {
-    layer = 2; 
+    layer = 2;
     max = steel;
   }
   if (ammo > max) {
@@ -140,6 +147,7 @@ function develop(fuel, ammo, steel, baux, secretary, isitaly, hqlevel) {
     max = baux;
   }
   let list = developList[secretary][layer].deepCopy();
+  //陆攻开发池
   if (
     secretary == 2 &&
     (layer == 1 || layer == 3) &&
@@ -148,35 +156,203 @@ function develop(fuel, ammo, steel, baux, secretary, isitaly, hqlevel) {
     baux >= 250
   ) {
     for (let i = 0; i < list.length; ++i) {
-      if (list[i][0]==21) list[i][1] -= 2;
-      if (list[i][0]==23) list[i][1] -= 2;
-      if (list[i][0]==24) list[i][1] -= 2;
-      if (list[i][0]==25) list[i][1] -= 2;
-      if (list[i][0]==168) list[i][1] += 8;
-      // if (list[i][1] <= 0) {
-      //   list.splice(i, 1);
-      //   --i;
-      // }
+      if (list[i][0] == 21) list[i][1] -= 2;
+      if (list[i][0] == 23) list[i][1] -= 2;
+      if (list[i][0] == 24) list[i][1] -= 2;
+      if (list[i][0] == 25) list[i][1] -= 2;
+      if (list[i][0] == 168) list[i][1] += 8;
     }
-    // list.push([59, 8]);
-    // list.sort(listSort);
   }
-  // if (isitaly && layer == 2) {
-  //   for (var i = 0; i < list.length; ++i) {
-  //     if (items[list[i][0]][0] == 25) list[i][1] -= 2;
-  //     if (items[list[i][0]][0] == 22 && secretary == 1) list[i][1] -= 2;
-  //     if (list[i][1] <= 0) {
-  //       list.splice(i, 1);
-  //       --i;
-  //     }
-  //   }
-  //   list.push([44, secretary == 1 ? 4 : 2]);
-  //   list.sort(listSort);
-  // }
+  // 100 Maestrale/Grecale/Libeccio/Scirocco
+  if (isitaly == 100 && secretary == 1) {
+    if (layer == 0 || layer == 2) {
+      for (let i = 0; i < list.length; ++i) {
+        if (list[i][0] == 2) list[i][1] -= 2;
+        if (list[i][0] == 147) list[i][1] += 2;
+      }
+    }
+    if (layer == 1) {
+      for (let i = 0; i < list.length; ++i) {
+        if (list[i][0] == 16) list[i][1] -= 2;
+        if (list[i][0] == 44) list[i][1] -= 2;
+        if (list[i][0] == 147) list[i][1] += 4;
+      }
+    }
+    if (layer == 3) {
+      for (let i = 0; i < list.length; ++i) {
+        if (list[i][0] == 25) list[i][1] -= 2;
+        if (list[i][0] == 16) list[i][1] -= 2;
+        if (list[i][0] == 44) list[i][1] -= 2;
+        if (list[i][0] == 163) list[i][1] += 2;
+        if (list[i][0] == 147) list[i][1] += 4;
+      }
+    }
+  }
+  // 101 Littorio、Roma、Zara、Pola 炮战·铝池
+  if (isitaly == 101 && secretary == 0 && layer == 3) {
+    for (let i = 0; i < list.length; ++i) {
+      if (list[i][0] == 10) list[i][1] -= 2;
+      if (list[i][0] == 22) list[i][1] -= 2;
+      if (list[i][0] == 25) list[i][1] -= 2;
+      if (list[i][0] == 163) list[i][1] += 6;
+    }
+  }
+  // 102 伊势改/伊势改二/日向改/日向改二 空母·铝池
+  if (isitaly == 102 && secretary == 2 && layer == 3) {
+    for (let i = 0; i < list.length; ++i) {
+      if (list[i][0] == 19) list[i][1] -= 2;
+      if (list[i][0] == 207) list[i][1] += 2;
+    }
+  }
+  // 103 日向改/日向改二 空母·弹池
+  if (isitaly == 103 && secretary == 2 && layer == 1) {
+    for (let i = 0; i < list.length; ++i) {
+      if (list[i][0] == 19) list[i][1] -= 2;
+      if (list[i][0] == 207) list[i][1] += 2;
+    }
+  }
+  //104 Ark Royal 空母
+  if (isitaly == 104 && secretary == 2) {
+    if (layer == 3) {
+      for (let i = 0; i < list.length; ++i) {
+        if (list[i][0] == 16) list[i][1] -= 2;
+        if (list[i][0] == 20) list[i][1] -= 2;
+        if (list[i][0] == 21) list[i][1] -= 2;
+        if (list[i][0] == 23) list[i][1] -= 2;
+        if (list[i][0] == 25) list[i][1] -= 2;
+        if (list[i][0] == 242) list[i][1] += 6;
+        if (list[i][0] == 249) list[i][1] += 4;
+      }
+    }
+    if (layer == 1) {
+      for (let i = 0; i < list.length; ++i) {
+        if (list[i][0] == 16) list[i][1] -= 2;
+        if (list[i][0] == 23) list[i][1] -= 2;
+        if (list[i][0] == 25) list[i][1] -= 2;
+        if (list[i][0] == 242) list[i][1] += 4;
+        if (list[i][0] == 249) list[i][1] += 2;
+      }
+    }
+  }
+  // 105 Warspite/Nelson 炮战·铝池
+  if (isitaly == 105 && secretary == 0 && layer == 3) {
+    for (let i = 0; i < list.length; ++i) {
+      if (list[i][0] == 10) list[i][1] -= 2;
+      if (list[i][0] == 20) list[i][1] -= 2;
+      if (list[i][0] == 21) list[i][1] -= 2;
+      if (list[i][0] == 250) list[i][1] += 6;
+    }
+  }
+  // 106 Commandant Teste 空母
+  if (isitaly == 106 && secretary == 2) {
+    if (layer == 3) {
+      for (let i = 0; i < list.length; ++i) {
+        if (list[i][0] == 16) list[i][1] -= 2;
+        if (list[i][0] == 18) list[i][1] -= 2;
+        if (list[i][0] == 21) list[i][1] -= 2;
+        if (list[i][0] == 194) list[i][1] += 8;
+      }
+    }
+    if (layer == 1) {
+      for (let i = 0; i < list.length; ++i) {
+        if (list[i][0] == 16) list[i][1] -= 2;
+        if (list[i][0] == 18) list[i][1] -= 2;
+        if (list[i][0] == 194) list[i][1] += 4;
+      }
+    }
+  }
+  // 107 Z1/Z3 水雷
+  if (isitaly == 107 && secretary == 1) {
+    if (layer == 0 || layer == 2) {
+      for (let i = 0; i < list.length; ++i) {
+        if (list[i][0] == 14) list[i][1] -= 2;
+        if (list[i][0] == 78) list[i][1] += 2;
+      }
+    }
+    if (layer == 1) {
+      for (let i = 0; i < list.length; ++i) {
+        if (list[i][0] == 14) list[i][1] -= 2;
+        if (list[i][0] == 44) list[i][1] -= 2;
+        if (list[i][0] == 78) list[i][1] += 6;
+      }
+    }
+    if (layer == 3) {
+      for (let i = 0; i < list.length; ++i) {
+        if (list[i][0] == 24) list[i][1] -= 2;
+        if (list[i][0] == 44) list[i][1] -= 2;
+        if (list[i][0] == 78) list[i][1] += 4;
+      }
+    }
+  }
+  // 108 秋月/照月/凉月/初月 水雷
+  if (isitaly == 108 && secretary == 1) {
+    if (layer == 0 || layer == 2) {
+      for (let i = 0; i < list.length; ++i) {
+        if (list[i][0] == 1) list[i][1] -= 2;
+        if (list[i][0] == 4) list[i][1] -= 2;
+        if (list[i][0] == 30) list[i][1] += 4;
+      }
+    }
+    if (layer == 3) {
+      for (let i = 0; i < list.length; ++i) {
+        if (list[i][0] == 20) list[i][1] -= 2;
+        if (list[i][0] == 25) list[i][1] -= 2;
+        if (list[i][0] == 46) list[i][1] -= 2;
+        if (list[i][0] == 30) list[i][1] += 6;
+      }
+    }
+  }
+  // 109 阿贺野/能代/矢矧/酒匂
+  if (isitaly == 109 && secretary == 1) {
+    if (layer == 0 || layer == 2) {
+      for (let i = 0; i < list.length; ++i) {
+        if (list[i][0] == 1) list[i][1] -= 2;
+        if (list[i][0] == 2) list[i][1] -= 2;
+        if (list[i][0] == 66) list[i][1] += 4;
+      }
+    }
+    if (layer == 1) {
+      for (let i = 0; i < list.length; ++i) {
+        if (list[i][0] == 10) list[i][1] -= 2;
+        if (list[i][0] == 16) list[i][1] -= 2;
+        if (list[i][0] == 66) list[i][1] += 4;
+      }
+    }
+    if (layer == 3) {
+      for (let i = 0; i < list.length; ++i) {
+        if (list[i][0] == 10) list[i][1] -= 2;
+        if (list[i][0] == 16) list[i][1] -= 2;
+        if (list[i][0] == 66) list[i][1] += 4;
+      }
+    }
+  }
+  // 110 Saratoga/Hornet
+  if (isitaly == 110 && secretary == 2) {
+    if (layer == 1) {
+      for (let i = 0; i < list.length; ++i) {
+        if (list[i][0] == 18) list[i][1] -= 2;
+        if (list[i][0] == 23) list[i][1] -= 2;
+        if (list[i][0] == 26) list[i][1] -= 2;
+        if (list[i][0] == 195) list[i][1] += 6;
+      }
+    }
+    if (layer == 3) {
+      for (let i = 0; i < list.length; ++i) {
+        if (list[i][0] == 18) list[i][1] -= 2;
+        if (list[i][0] == 23) list[i][1] -= 2;
+        if (list[i][0] == 26) list[i][1] -= 2;
+        if (list[i][0] == 19) list[i][1] -= 2;
+        if (list[i][0] == 20) list[i][1] -= 4;
+        if (list[i][0] == 195) list[i][1] += 6;
+        if (list[i][0] == 197) list[i][1] += 6;
+      }
+    }
+  }
+  //去除出率0
   for (let i = 0; i < list.length; ++i) {
-    if (list[i][1] <= 0){
-        list.splice(i, 1);
-        --i;
+    if (list[i][1] <= 0) {
+      list.splice(i, 1);
+      --i;
     }
   }
   var succ = [],
