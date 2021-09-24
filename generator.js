@@ -174,7 +174,11 @@ function display() {
       $("[name=ammu]")[0].value = this.input[0][1];
       $("[name=steel]")[0].value = this.input[0][2];
       $("[name=baux]")[0].value = this.input[0][3];
-      $("[name=secretary]")[0].value = this.input[2];
+      if(this.input[2]==0){
+        $("[name=secretary]")[0].value = "00"+this.input[1];
+      }else{
+        $("[name=secretary]")[0].value = this.input[2];
+      }
       $("[name=hqlevel]")[0].value = this.input[3];
       updateSim();
       $("[href=#sim]")[0].click();

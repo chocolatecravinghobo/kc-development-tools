@@ -95,7 +95,7 @@ var developList = [
 
 for (let i = 0; i < 3; ++i) {
   for (let j = 0; j < 3; ++j) {
-    for (let k = 0; k < itemlist.length; ++k) {
+    for (let k = 0; k < items.length; ++k) {
       developList[i][j][k] = [];
       developList[i][j][k][0] = developMap[k][0];
       developList[i][j][k][1] = developMap[k][i * 3 + j + 1];
