@@ -1,5 +1,6 @@
+let dict;
 (function () {
-  var lang = window.location.search.substr(1);
+  let lang = window.location.search.substr(1);
   if (["en", "zh", "zh-tw", "ja"].indexOf(lang) < 0) {
     lang = (
       navigator.browserLanguage ? navigator.browserLanguage : navigator.language
@@ -8,7 +9,7 @@
     else if (lang.indexOf("zh") >= 0) lang = "zh";
     else if (lang.indexOf("ja") >= 0) lang = "ja";
     else if (navigator.languages != undefined) {
-      for (var i = 0; i < navigator.languages.length; ++i) {
+      for (let i = 0; i < navigator.languages.length; ++i) {
         if (navigator.languages[i].toLowerCase().indexOf("zh-tw") >= 0) {
           lang = "zh-tw";
           break;
@@ -304,11 +305,11 @@
       document.body.lang = "en";
     });
   document.addEventListener("DOMContentLoaded", function () {
-    var $cs = $(".i18n");
-    for (var i = 0; i < $cs.length; ++i)
+    let $cs = $(".i18n");
+    for (let i = 0; i < $cs.length; ++i)
       $cs[i].innerHTML = getString($cs[i].innerHTML);
     $cs = $(".notice");
-    for (var i = 0; i < $cs.length; ++i) $cs[i].title = getString($cs[i].title);
+    for (let i = 0; i < $cs.length; ++i) $cs[i].title = getString($cs[i].title);
 
     $("#lang").find("[value=" + lang + "]")[0].selected = true;
     $("#lang")[0].onchange = function () {
@@ -317,10 +318,9 @@
     };
   });
 })();
-var dict;
 function getString(src) {
   if (dict == undefined) return src;
-  for (var name in dict) {
+  for (let name in dict) {
     src = src.replace(new RegExp(name, "g"), dict[name]);
   }
   return src;

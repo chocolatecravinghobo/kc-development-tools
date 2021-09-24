@@ -1,4 +1,4 @@
-var itemtypenames;
+let itemtypenames;
 if (itemtypenames == undefined)
   itemtypenames = [
     "Small Caliber Main Gun",
@@ -181,9 +181,9 @@ const items = [
   [250, "Spitfire Mk.I", 3, 3, 20, [1, 2, 0, 4], false],
 ];
 
-// var k = 0;
-// for (var j = 0; j < itemtypenames.length; ++j) {
-//   for (var i = 0; i < itemlist.length; ++i) {
+// let k = 0;
+// for (let j = 0; j < itemtypenames.length; ++j) {
+//   for (let i = 0; i < itemlist.length; ++i) {
 //     if (itemlist[i][4] == j) {
 //       items[k] = itemlist[i];
 //       k++;
@@ -215,12 +215,12 @@ function developResult(id, percentage, materials, hqlevel) {
       }
     }
 
-    var node = document.createElement("tr");
+    let node = document.createElement("tr");
     if (this.successful) node.className = "success";
     else {
       node.className = "fail";
-      var title = "Require";
-      for (var i = 0; i < 4; ++i) {
+      let title = "Require";
+      for (let i = 0; i < 4; ++i) {
         if (items[itemid][5][i] * 10 > materials[i]) {
           title +=
             "\n" +
@@ -234,7 +234,7 @@ function developResult(id, percentage, materials, hqlevel) {
       }
       node.title = getString(title);
     }
-    var tdnode = document.createElement("td");
+    let tdnode = document.createElement("td");
     tdnode.className = "type" + (items[itemid][6] ? 4 : items[itemid][4]);
     tdnode.appendChild(document.createTextNode(items[itemid][1]));
     node.appendChild(tdnode);

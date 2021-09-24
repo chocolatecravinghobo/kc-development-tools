@@ -1,6 +1,6 @@
 Array.prototype.deepCopy = function () {
-  var temp = [];
-  for (var i = 0; i < this.length; ++i) {
+  let temp = [];
+  for (let i = 0; i < this.length; ++i) {
     if (this[i] == undefined) temp[i] = this[i];
     else if (this[i] instanceof Array) temp[i] = this[i].deepCopy();
     else if (typeof this[i] == "object") temp[i] = this[i].clone();
@@ -9,7 +9,7 @@ Array.prototype.deepCopy = function () {
   return temp;
 };
 
-var developMap = [
+let developMap = [
   //炮战（油钢，弹，铝），水雷（油钢，弹，铝），航母（油钢，弹，铝）
   [1, 4, 0, 0, 6, 2, 2, 2, 2, 0],
   [2, 2, 0, 0, 1, 4, 2, 2, 2, 0],
@@ -87,7 +87,7 @@ var developMap = [
   [250, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 ];
 
-var developList = [
+let developList = [
   [[], [], [], []],
   [[], [], [], []],
   [[], [], [], []],
@@ -355,11 +355,11 @@ function develop(fuel, ammo, steel, baux, secretary, isitaly, hqlevel) {
       --i;
     }
   }
-  var succ = [],
+  let succ = [],
     fail = [];
-  var failprob = 100;
-  for (var i = 0; i < list.length; ++i) {
-    var result = new developResult(
+  let failprob = 100;
+  for (let i = 0; i < list.length; ++i) {
+    let result = new developResult(
       list[i][0],
       list[i][1],
       [fuel, ammo, steel, baux],

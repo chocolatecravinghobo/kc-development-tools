@@ -1,9 +1,9 @@
-var selectedItems = [];
+let selectedItems = [];
 
 function select() {
   if (this.classList.contains("selected")) {
     this.classList.remove("selected");
-    var index = selectedItems.indexOf(this.index);
+    let index = selectedItems.indexOf(this.index);
     if (index != -1) selectedItems.splice(index, 1);
   } else {
     this.classList.add("selected");
@@ -12,14 +12,14 @@ function select() {
       return i1 - i2;
     });
   }
-  var hq = 1;
-  for (var i = 0; i < selectedItems.length; ++i) {
+  let hq = 1;
+  for (let i = 0; i < selectedItems.length; ++i) {
     if (items[selectedItems[i]][3] * 10 > hq)
       hq = items[selectedItems[i]][3] * 10;
   }
   $("#minhq")[0].innerHTML = hq;
-  var hqs = $("[name=hqlevel_]")[0];
-  for (var i = 0; i < hqs.children.length; ++i) {
+  let hqs = $("[name=hqlevel_]")[0];
+  for (let i = 0; i < hqs.children.length; ++i) {
     hqs.children[i].disabled = hqs.children[i].value < hq;
   }
   if (hqs.value < hq) hqs.value = hq;
@@ -27,27 +27,27 @@ function select() {
 }
 
 function createList() {
-  var div = $("#gend div")[0];
+  let div = $("#gend div")[0];
   div.innerHTML = "";
-  var last = -1;
-  var type;
-  for (var i = 0; i < items.length; ++i) {
+  let last = -1;
+  let type;
+  for (let i = 0; i < items.length; ++i) {
     if (items[i][4] != last) {
       type = document.createElement("p");
-      var title = document.createElement("span");
+      let title = document.createElement("span");
       title.className = "type";
       title.appendChild(document.createTextNode(itemtypenames[items[i][4]]));
       type.appendChild(title);
       div.appendChild(type);
       last = items[i][4];
     }
-    var item = document.createElement("button");
+    let item = document.createElement("button");
     item.appendChild(document.createTextNode(items[i][1]));
     item.className = "type" + (items[i][6] ? 4 : items[i][4]);
     item.title = "Require";
     if (i == 59) item.title = "\nFuel ≥ 240\nAmmunition ≥ 260\nBauxite ≥ 250";
     else
-      for (var j = 0; j < 4; ++j)
+      for (let j = 0; j < 4; ++j)
         if (items[i][5][j] > 0)
           item.title += "\n" + materialNames[j] + " ≥ " + items[i][5][j] * 10;
     if (items[i][3] > 0) item.title += "\nHQ Level ≥ " + items[i][3] * 10;
@@ -98,7 +98,7 @@ function updateGen() {
           }
         }
       }
-      for (var isitaly = 99; isitaly < 111; ++isitaly) {
+      for (let isitaly = 99; isitaly < 111; ++isitaly) {
         if (
           secretary != 1 &&
           (isitaly == 100 || isitaly == 107 || isitaly == 108 || isitaly == 109)
@@ -114,7 +114,7 @@ function updateGen() {
             isitaly == 110)
         )
           continue;
-        var result = new analysis(
+        let result = new analysis(
           selectedItems.slice(0),
           develop(
             materials[0],
@@ -132,7 +132,7 @@ function updateGen() {
   }
   if (results.length == 0) $("#results")[0].innerHTML = getString("No Result");
   else {
-    for (var i = 0; i < 5; ++i) {
+    for (let i = 0; i < 5; ++i) {
       sortType = [-1, i];
       results.sort(resultSort);
     }
@@ -141,10 +141,10 @@ function updateGen() {
 }
 
 function display() {
-  var div = $("#results")[0];
+  let div = $("#results")[0];
   div.innerHTML = "";
-  for (var i = 0; i < results.length; ++i) {
-    var head = document.createElement("div");
+  for (let i = 0; i < results.length; ++i) {
+    let head = document.createElement("div");
     head.className = "resulth";
     let value = "";
     if (results[i].result[3][2] == 0) {
@@ -164,7 +164,7 @@ function display() {
           "%"
       )
     );
-    var detail = document.createElement("a");
+    let detail = document.createElement("a");
     detail.href = "javascript:void(0);";
     detail.className = "i18n details";
     detail.appendChild(document.createTextNode(getString("Details")));
@@ -185,12 +185,12 @@ function display() {
     };
     head.appendChild(detail);
     div.appendChild(head);
-    var body = document.createElement("div");
+    let body = document.createElement("div");
     body.className = "resultb";
-    var table = document.createElement("table");
+    let table = document.createElement("table");
     table.border = 1;
     table.cellSpacing = 0;
-    var tbody = document.createElement("tbody");
+    let tbody = document.createElement("tbody");
     tbody.innerHTML =
       '<tr><th class="i18n" rowspan=2>' +
       getString("Name") +
@@ -209,18 +209,18 @@ function display() {
       '</th><th class="i18n mat">' +
       getString("Dev. Mat.") +
       "</th></tr>";
-    var tr = document.createElement("tr");
-    var td = document.createElement("td");
+    let tr = document.createElement("tr");
+    let td = document.createElement("td");
     td.appendChild(document.createTextNode(getString("Get Target")));
     td.className = "i18n";
     tr.appendChild(td);
     td = document.createElement("td");
     td.appendChild(document.createTextNode(results[i].succ + "%"));
     tr.appendChild(td);
-    for (var j = 0; j < 5; ++j) {
+    for (let j = 0; j < 5; ++j) {
       td = document.createElement("td");
       td.appendChild(document.createTextNode(results[i].expected[j]));
-      var span = document.createElement("span");
+      let span = document.createElement("span");
       span.className =
         sortType[0] == -1 && j == sortType[1] ? "sorting" : "sort";
       span.appendChild(document.createTextNode("▼"));
@@ -238,14 +238,14 @@ function display() {
     td = document.createElement("td");
     td.appendChild(document.createTextNode(results[i].fail + "%"));
     tr.appendChild(td);
-    for (var j = 0; j < 5; ++j) {
+    for (let j = 0; j < 5; ++j) {
       td = document.createElement("td");
       td.appendChild(document.createTextNode("--"));
       tr.appendChild(td);
     }
     tbody.appendChild(tr);
     let number;
-    for (var j = 0; j < results[i].details.length; ++j) {
+    for (let j = 0; j < results[i].details.length; ++j) {
       tr = document.createElement("tr");
       td = document.createElement("td");
       for (let k = 0; k < items.length; ++k) {
@@ -256,10 +256,10 @@ function display() {
       td = document.createElement("td");
       td.appendChild(document.createTextNode(results[i].details[j][1] + "%"));
       tr.appendChild(td);
-      for (var k = 2; k < 7; ++k) {
+      for (let k = 2; k < 7; ++k) {
         td = document.createElement("td");
         td.appendChild(document.createTextNode(results[i].details[j][k]));
-        var span = document.createElement("span");
+        let span = document.createElement("span");
         span.className =
           j == sortType[0] && k - 2 == sortType[1] ? "sorting" : "sort";
         span.appendChild(document.createTextNode("▼"));
@@ -283,13 +283,13 @@ function sortResult() {
 }
 
 function analysis(expect, result) {
-  var total = 0;
+  let total = 0;
   let rest = expect.slice(0);
   for (let i = 0; i < expect.length; ++i) {
     rest[i] = items[expect[i]][0];
   }
   let expectid = rest.slice(0);
-  for (var i = 0; i < result[0].length; ++i) {
+  for (let i = 0; i < result[0].length; ++i) {
     if (rest.indexOf(result[0][i].id) != -1) {
       rest.splice(rest.indexOf(result[0][i].id), 1);
       total += result[0][i].percentage;
@@ -311,7 +311,7 @@ function analysis(expect, result) {
     rnd((100 - this.fail) / total),
   ];
   this.details = [];
-  for (var i = 0; i < result[0].length; ++i) {
+  for (let i = 0; i < result[0].length; ++i) {
     if (expectid.indexOf(result[0][i].id) != -1) {
       this.details[expectid.indexOf(result[0][i].id)] = [
         result[0][i].id,
@@ -330,9 +330,9 @@ function rnd(n) {
   return Math.round(n * 100) / 100;
 }
 
-var sortType = [-1, 4];
+let sortType = [-1, 4];
 function resultSort(r1, r2) {
-  var v1, v2;
+  let v1, v2;
   if (sortType[0] == -1) {
     v1 = r1.expected.slice(0);
     v2 = r2.expected.slice(0);

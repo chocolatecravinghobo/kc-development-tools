@@ -1,8 +1,8 @@
-var head = document.createElement("tr");
-var failtr = document.createElement("tr");
-var collapse = document.createElement("a");
+let head = document.createElement("tr");
+let failtr = document.createElement("tr");
+let collapse = document.createElement("a");
 (function () {
-  var tnode = document.createElement("th");
+  let tnode = document.createElement("th");
   tnode.className = "i18n";
   tnode.appendChild(document.createTextNode(getString("Name")));
   tnode.style.width = "250px";
@@ -14,7 +14,7 @@ var collapse = document.createElement("a");
   head.appendChild(tnode);
   failtr.className = "failtr";
   tnode = document.createElement("td");
-  var tnode2 = document.createElement("span");
+  let tnode2 = document.createElement("span");
   tnode2.innerHTML = getString("Failed");
   tnode2.className = "i18n";
   tnode.appendChild(tnode2);
@@ -68,7 +68,7 @@ function updateSim() {
       secretary = 2;
     }
   }
-  var result = develop(
+  let result = develop(
     $("#simd [name='fuel']")[0].value,
     $("#simd [name='ammu']")[0].value,
     $("#simd [name='steel']")[0].value,
@@ -77,13 +77,13 @@ function updateSim() {
     isitaly,
     $("#simd [name='hqlevel']")[0].value
   );
-  var succ = result[0],
+  let succ = result[0],
     fail = result[1];
-  var table = $("#result")[0];
+  let table = $("#result")[0];
   while (table.children[1] != undefined) table.removeChild(table.children[1]);
-  for (var i = 0; i < succ.length; ++i) table.appendChild(succ[i].toTRNode());
+  for (let i = 0; i < succ.length; ++i) table.appendChild(succ[i].toTRNode());
   failtr.children[1].innerHTML = result[2] + "%";
   collapse.innerHTML = "[+]";
   table.appendChild(failtr);
-  for (var i = 0; i < fail.length; ++i) table.appendChild(fail[i].toTRNode());
+  for (let i = 0; i < fail.length; ++i) table.appendChild(fail[i].toTRNode());
 }
