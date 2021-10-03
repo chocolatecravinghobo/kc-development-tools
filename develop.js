@@ -111,7 +111,7 @@ for (let i = 0; i < 3; ++i) {
 //isitaly 特殊秘书舰补正
 // 100 Maestrale/Grecale/Libeccio/Scirocco 及其改造形态
 // 101 Littorio(Italia)/Roma/Zara/Pola 及其改造形态
-// 102 伊势改/伊势改二/日向改/日向改二
+// 102 伊势改/伊势改二
 // 103 日向改/日向改二
 // 104 Ark Royal 及其改造形态
 // 105 Warspite/Nelson 及其改造形态
@@ -171,14 +171,14 @@ function develop(fuel, ammo, steel, baux, secretary, isitaly, hqlevel) {
         if (list[i][0] == 147) list[i][1] += 2;
       }
     }
-    if (layer == 1) {
+    else if (layer == 1) {
       for (let i = 0; i < list.length; ++i) {
         if (list[i][0] == 16) list[i][1] -= 2;
         if (list[i][0] == 44) list[i][1] -= 2;
         if (list[i][0] == 147) list[i][1] += 4;
       }
     }
-    if (layer == 3) {
+    else if (layer == 3) {
       for (let i = 0; i < list.length; ++i) {
         if (list[i][0] == 25) list[i][1] -= 2;
         if (list[i][0] == 16) list[i][1] -= 2;
@@ -197,7 +197,7 @@ function develop(fuel, ammo, steel, baux, secretary, isitaly, hqlevel) {
       if (list[i][0] == 163) list[i][1] += 6;
     }
   }
-  // 102 伊势改/伊势改二/日向改/日向改二 空母·铝池
+  // 102 伊势改/伊势改二 空母·铝池
   if (isitaly == 102 && secretary == 2 && layer == 3) {
     for (let i = 0; i < list.length; ++i) {
       if (list[i][0] == 19) list[i][1] -= 2;
@@ -205,11 +205,21 @@ function develop(fuel, ammo, steel, baux, secretary, isitaly, hqlevel) {
     }
   }
   // 103 日向改/日向改二 空母·弹池
-  if (isitaly == 103 && secretary == 2 && layer == 1) {
-    for (let i = 0; i < list.length; ++i) {
-      if (list[i][0] == 19) list[i][1] -= 2;
-      if (list[i][0] == 207) list[i][1] += 2;
+  if (isitaly == 103 && secretary == 2 ) {
+    if(layer == 1){
+      for (let i = 0; i < list.length; ++i) {
+        if (list[i][0] == 19) list[i][1] -= 2;
+        if (list[i][0] == 207) list[i][1] += 2;
+      }
     }
+    else if(layer == 3){
+      for (let i = 0; i < list.length; ++i) {
+        if (list[i][0] == 19) list[i][1] -= 2;
+        if (list[i][0] == 207) list[i][1] += 2;
+      }
+    }
+    
+
   }
   //104 Ark Royal 空母
   if (isitaly == 104 && secretary == 2) {
@@ -224,7 +234,7 @@ function develop(fuel, ammo, steel, baux, secretary, isitaly, hqlevel) {
         if (list[i][0] == 249) list[i][1] += 4;
       }
     }
-    if (layer == 1) {
+    else if (layer == 1) {
       for (let i = 0; i < list.length; ++i) {
         if (list[i][0] == 16) list[i][1] -= 2;
         if (list[i][0] == 23) list[i][1] -= 2;
@@ -253,7 +263,7 @@ function develop(fuel, ammo, steel, baux, secretary, isitaly, hqlevel) {
         if (list[i][0] == 194) list[i][1] += 8;
       }
     }
-    if (layer == 1) {
+    else if (layer == 1) {
       for (let i = 0; i < list.length; ++i) {
         if (list[i][0] == 16) list[i][1] -= 2;
         if (list[i][0] == 18) list[i][1] -= 2;
@@ -269,14 +279,14 @@ function develop(fuel, ammo, steel, baux, secretary, isitaly, hqlevel) {
         if (list[i][0] == 78) list[i][1] += 2;
       }
     }
-    if (layer == 1) {
+    else if (layer == 1) {
       for (let i = 0; i < list.length; ++i) {
         if (list[i][0] == 14) list[i][1] -= 2;
         if (list[i][0] == 44) list[i][1] -= 2;
         if (list[i][0] == 78) list[i][1] += 6;
       }
     }
-    if (layer == 3) {
+    else if (layer == 3) {
       for (let i = 0; i < list.length; ++i) {
         if (list[i][0] == 24) list[i][1] -= 2;
         if (list[i][0] == 44) list[i][1] -= 2;
@@ -293,7 +303,7 @@ function develop(fuel, ammo, steel, baux, secretary, isitaly, hqlevel) {
         if (list[i][0] == 30) list[i][1] += 4;
       }
     }
-    if (layer == 3) {
+    else if (layer == 3) {
       for (let i = 0; i < list.length; ++i) {
         if (list[i][0] == 20) list[i][1] -= 2;
         if (list[i][0] == 25) list[i][1] -= 2;
@@ -311,14 +321,14 @@ function develop(fuel, ammo, steel, baux, secretary, isitaly, hqlevel) {
         if (list[i][0] == 66) list[i][1] += 4;
       }
     }
-    if (layer == 1) {
+    else if (layer == 1) {
       for (let i = 0; i < list.length; ++i) {
         if (list[i][0] == 10) list[i][1] -= 2;
         if (list[i][0] == 16) list[i][1] -= 2;
         if (list[i][0] == 66) list[i][1] += 4;
       }
     }
-    if (layer == 3) {
+    else if (layer == 3) {
       for (let i = 0; i < list.length; ++i) {
         if (list[i][0] == 10) list[i][1] -= 2;
         if (list[i][0] == 16) list[i][1] -= 2;
@@ -336,7 +346,7 @@ function develop(fuel, ammo, steel, baux, secretary, isitaly, hqlevel) {
         if (list[i][0] == 195) list[i][1] += 6;
       }
     }
-    if (layer == 3) {
+    else if (layer == 3) {
       for (let i = 0; i < list.length; ++i) {
         if (list[i][0] == 18) list[i][1] -= 2;
         if (list[i][0] == 23) list[i][1] -= 2;
