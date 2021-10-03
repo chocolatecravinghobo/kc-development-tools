@@ -195,7 +195,7 @@ function display() {
       '<tr><th class="i18n" rowspan=2>' +
       getString("Name") +
       '</th><th class="i18n" rowspan=2>' +
-      getString("Success Rate") +
+      getString("Percentage") +
       '</th><th class="i18n" colspan=5>' +
       getString("Expected Resource Consumption") +
       '</th></tr><tr><th class="i18n mat">' +
