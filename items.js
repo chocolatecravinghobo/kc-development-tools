@@ -1,4 +1,4 @@
-let itemtypenames;
+var itemtypenames;
 if (itemtypenames == undefined)
   itemtypenames = [
     "Small Caliber Main Gun",
