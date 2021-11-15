@@ -69,6 +69,7 @@ let developMap = [
   [66, 0, 0, 0, 4, 0, 0, 0, 0, 0],
   [72, 4, 0, 0, 0, 0, 0, 0, 0, 0],
   [73, 2, 0, 0, 0, 0, 0, 0, 0, 0],
+  [74, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   [75, 0, 0, 0, 4, 0, 0, 0, 0, 0],
   [90, 2, 2, 0, 0, 0, 0, 0, 0, 0],
   [120, 0, 0, 2, 0, 0, 4, 0, 0, 2],
@@ -170,15 +171,13 @@ function develop(fuel, ammo, steel, baux, secretary, isitaly, hqlevel) {
         if (list[i][0] == 2) list[i][1] -= 2;
         if (list[i][0] == 147) list[i][1] += 2;
       }
-    }
-    else if (layer == 1) {
+    } else if (layer == 1) {
       for (let i = 0; i < list.length; ++i) {
         if (list[i][0] == 16) list[i][1] -= 2;
         if (list[i][0] == 44) list[i][1] -= 2;
         if (list[i][0] == 147) list[i][1] += 4;
       }
-    }
-    else if (layer == 3) {
+    } else if (layer == 3) {
       for (let i = 0; i < list.length; ++i) {
         if (list[i][0] == 25) list[i][1] -= 2;
         if (list[i][0] == 16) list[i][1] -= 2;
@@ -205,21 +204,18 @@ function develop(fuel, ammo, steel, baux, secretary, isitaly, hqlevel) {
     }
   }
   // 103 日向改/日向改二 空母·弹池
-  if (isitaly == 103 && secretary == 2 ) {
-    if(layer == 1){
+  if (isitaly == 103 && secretary == 2) {
+    if (layer == 1) {
+      for (let i = 0; i < list.length; ++i) {
+        if (list[i][0] == 19) list[i][1] -= 2;
+        if (list[i][0] == 207) list[i][1] += 2;
+      }
+    } else if (layer == 3) {
       for (let i = 0; i < list.length; ++i) {
         if (list[i][0] == 19) list[i][1] -= 2;
         if (list[i][0] == 207) list[i][1] += 2;
       }
     }
-    else if(layer == 3){
-      for (let i = 0; i < list.length; ++i) {
-        if (list[i][0] == 19) list[i][1] -= 2;
-        if (list[i][0] == 207) list[i][1] += 2;
-      }
-    }
-    
-
   }
   //104 Ark Royal 空母
   if (isitaly == 104 && secretary == 2) {
@@ -233,8 +229,7 @@ function develop(fuel, ammo, steel, baux, secretary, isitaly, hqlevel) {
         if (list[i][0] == 242) list[i][1] += 6;
         if (list[i][0] == 249) list[i][1] += 4;
       }
-    }
-    else if (layer == 1) {
+    } else if (layer == 1) {
       for (let i = 0; i < list.length; ++i) {
         if (list[i][0] == 16) list[i][1] -= 2;
         if (list[i][0] == 23) list[i][1] -= 2;
@@ -259,11 +254,11 @@ function develop(fuel, ammo, steel, baux, secretary, isitaly, hqlevel) {
       for (let i = 0; i < list.length; ++i) {
         if (list[i][0] == 16) list[i][1] -= 2;
         if (list[i][0] == 18) list[i][1] -= 2;
+        if (list[i][0] == 20) list[i][1] -= 2;
         if (list[i][0] == 21) list[i][1] -= 2;
         if (list[i][0] == 194) list[i][1] += 8;
       }
-    }
-    else if (layer == 1) {
+    } else if (layer == 1) {
       for (let i = 0; i < list.length; ++i) {
         if (list[i][0] == 16) list[i][1] -= 2;
         if (list[i][0] == 18) list[i][1] -= 2;
@@ -278,17 +273,16 @@ function develop(fuel, ammo, steel, baux, secretary, isitaly, hqlevel) {
         if (list[i][0] == 14) list[i][1] -= 2;
         if (list[i][0] == 78) list[i][1] += 2;
       }
-    }
-    else if (layer == 1) {
+    } else if (layer == 1) {
       for (let i = 0; i < list.length; ++i) {
         if (list[i][0] == 14) list[i][1] -= 2;
+        if (list[i][0] == 34) list[i][1] -= 2;
         if (list[i][0] == 44) list[i][1] -= 2;
         if (list[i][0] == 78) list[i][1] += 6;
       }
-    }
-    else if (layer == 3) {
+    } else if (layer == 3) {
       for (let i = 0; i < list.length; ++i) {
-        if (list[i][0] == 24) list[i][1] -= 2;
+        if (list[i][0] == 34) list[i][1] -= 2;
         if (list[i][0] == 44) list[i][1] -= 2;
         if (list[i][0] == 78) list[i][1] += 4;
       }
@@ -302,8 +296,7 @@ function develop(fuel, ammo, steel, baux, secretary, isitaly, hqlevel) {
         if (list[i][0] == 4) list[i][1] -= 2;
         if (list[i][0] == 30) list[i][1] += 4;
       }
-    }
-    else if (layer == 3) {
+    } else if (layer == 3) {
       for (let i = 0; i < list.length; ++i) {
         if (list[i][0] == 20) list[i][1] -= 2;
         if (list[i][0] == 25) list[i][1] -= 2;
@@ -320,15 +313,13 @@ function develop(fuel, ammo, steel, baux, secretary, isitaly, hqlevel) {
         if (list[i][0] == 2) list[i][1] -= 2;
         if (list[i][0] == 66) list[i][1] += 4;
       }
-    }
-    else if (layer == 1) {
+    } else if (layer == 1) {
       for (let i = 0; i < list.length; ++i) {
         if (list[i][0] == 10) list[i][1] -= 2;
         if (list[i][0] == 16) list[i][1] -= 2;
         if (list[i][0] == 66) list[i][1] += 4;
       }
-    }
-    else if (layer == 3) {
+    } else if (layer == 3) {
       for (let i = 0; i < list.length; ++i) {
         if (list[i][0] == 10) list[i][1] -= 2;
         if (list[i][0] == 16) list[i][1] -= 2;
@@ -345,8 +336,7 @@ function develop(fuel, ammo, steel, baux, secretary, isitaly, hqlevel) {
         if (list[i][0] == 26) list[i][1] -= 2;
         if (list[i][0] == 195) list[i][1] += 6;
       }
-    }
-    else if (layer == 3) {
+    } else if (layer == 3) {
       for (let i = 0; i < list.length; ++i) {
         if (list[i][0] == 18) list[i][1] -= 2;
         if (list[i][0] == 23) list[i][1] -= 2;
@@ -358,6 +348,84 @@ function develop(fuel, ammo, steel, baux, secretary, isitaly, hqlevel) {
       }
     }
   }
+  //比叡改二/比叡改二丙
+  if (isitaly == 111 && secretary == 0) {
+    if (layer == 3) {
+      for (let i = 0; i < list.length; ++i) {
+        if (list[i][0] == 19) list[i][1] -= 2;
+        if (list[i][0] == 23) list[i][1] -= 2;
+        if (list[i][0] == 26) list[i][1] -= 2;
+        if (list[i][0] == 74) list[i][1] += 6;
+      }
+    }
+  }
+  //神通改二
+  if (isitaly == 112 && secretary == 1) {
+    if (layer == 3) {
+      for (let i = 0; i < list.length; ++i) {
+        if (list[i][0] == 19) list[i][1] -= 2;
+        if (list[i][0] == 25) list[i][1] -= 2;
+        if (list[i][0] == 46) list[i][1] -= 2;
+        if (list[i][0] == 74) list[i][1] += 6;
+      }
+    }
+  }
+  //神风
+  if (isitaly == 113 && secretary == 1) {
+    if (layer == 0 || layer == 2) {
+      for (let i = 0; i < list.length; ++i) {
+        if (list[i][0] == 3) list[i][1] -= 2;
+        if (list[i][0] == 12) list[i][1] -= 2;
+        if (list[i][0] == 19) list[i][1] -= 2;
+        if (list[i][0] == 16) list[i][1] -= 2;
+        if (list[i][0] == 37) list[i][1] += 8;
+      }
+    } else if (layer == 1) {
+      for (let i = 0; i < list.length; ++i) {
+        if (list[i][0] == 12) list[i][1] -= 2;
+        if (list[i][0] == 37) list[i][1] += 2;
+      }
+    }
+  }
+  //睦月
+  if (isitaly == 114 && secretary == 1) {
+    if (layer == 0 || layer == 2) {
+      for (let i = 0; i < list.length; ++i) {
+        if (list[i][0] == 5) list[i][1] -= 2;
+        if (list[i][0] == 11) list[i][1] -= 2;
+        if (list[i][0] == 20) list[i][1] -= 2;
+        if (list[i][0] == 23) list[i][1] -= 2;
+        if (list[i][0] == 65) list[i][1] -= 2;
+        if (list[i][0] == 38) list[i][1] += 10;
+      }
+    } else if (layer == 1) {
+      for (let i = 0; i < list.length; ++i) {
+        if (list[i][0] == 5) list[i][1] -= 2;
+        if (list[i][0] == 11) list[i][1] -= 2;
+        if (list[i][0] == 65) list[i][1] -= 2;
+        if (list[i][0] == 38) list[i][1] += 6;
+      }
+    }
+  }
+  //吹雪
+  if (isitaly == 115 && secretary == 1) {
+    if (layer == 0 || layer == 2) {
+      for (let i = 0; i < list.length; ++i) {
+        if (list[i][0] == 3) list[i][1] -= 2;
+        if (list[i][0] == 11) list[i][1] -= 4;
+        if (list[i][0] == 25) list[i][1] -= 2;
+        if (list[i][0] == 65) list[i][1] -= 2;
+        if (list[i][0] == 49) list[i][1] += 10;
+      }
+    } else if (layer == 1) {
+      for (let i = 0; i < list.length; ++i) {
+        if (list[i][0] == 65) list[i][1] -= 2;
+        if (list[i][0] == 11) list[i][1] -= 2;
+        if (list[i][0] == 49) list[i][1] += 4;
+      }
+    }
+  }
+
   //去除出率0
   for (let i = 0; i < list.length; ++i) {
     if (list[i][1] <= 0) {

@@ -22,6 +22,7 @@ if (itemtypenames == undefined)
     "Supply Transport Container",
     "Anti-Air Fire Director",
     "Land-based Fighter",
+    "Night Battle Aid",
   ];
 
 // Id, Name, Rarity, Internal Rarity, Type, Break Materials[, is AA]
@@ -179,6 +180,7 @@ const items = [
   [75, "ドラム缶(輸送用)", 1, 0, 18, [0, 0, 1, 0], false],
   [120, "91式高射装置", 1, 1, 19, [0, 1, 0, 1], false],
   [250, "Spitfire Mk.I", 3, 3, 20, [1, 2, 0, 4], false],
+  [74, "探照灯", 1, 0, 21, [0, 0, 1, 1], false],
 ];
 
 // let k = 0;

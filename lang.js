@@ -117,6 +117,7 @@ let dict;
       "简易运输桶",
       "高射装置",
       "陆基战斗机",
+      "夜战支援",
     ];
   } else if (lang == "zh-tw") {
     document.title = "艦隊Collection 開發工具";
@@ -208,6 +209,7 @@ let dict;
       "簡易運輸桶",
       "高射裝置",
       "陸基戰鬥機",
+      "夜戰支援",
     ];
   } else if (lang == "ja") {
     document.title = "艦これ　装備開発ツール";
@@ -302,6 +304,7 @@ let dict;
       "簡易輸送部材",
       "高射装置",
       "陸軍戦闘機",
+      "夜戦装備",
     ];
   } else
     $(function () {

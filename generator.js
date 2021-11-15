@@ -98,13 +98,16 @@ function updateGen() {
           }
         }
       }
-      for (let isitaly = 99; isitaly < 111; ++isitaly) {
+      for (let isitaly = 99; isitaly < 116; ++isitaly) {
+        //水雷
         if (
           secretary != 1 &&
-          (isitaly == 100 || isitaly == 107 || isitaly == 108 || isitaly == 109)
+          (isitaly == 100 || isitaly == 107 || isitaly == 108 || isitaly == 109|| isitaly == 112|| isitaly == 113|| isitaly == 114|| isitaly == 115)
         )
           continue;
-        if (secretary != 0 && (isitaly == 101 || isitaly == 105)) continue;
+        //炮战
+        if (secretary != 0 && (isitaly == 101 || isitaly == 105|| isitaly == 111)) continue;
+        //航母
         if (
           secretary != 2 &&
           (isitaly == 102 ||
