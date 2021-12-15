@@ -431,7 +431,7 @@ function develop(fuel, ammo, steel, baux, secretary, isitaly, hqlevel) {
     }
   }
 
-  //神州丸 todo
+  //あきつ丸,神州丸,宗谷特务舰 todo
   if (isitaly == 116 && secretary == 2) {
     if (layer == 0 || layer == 2) {
       for (let i = 0; i < list.length; ++i) {
@@ -440,9 +440,8 @@ function develop(fuel, ammo, steel, baux, secretary, isitaly, hqlevel) {
         if (list[i][0] == 38) list[i][1] += 4;
       }
     } else if (layer == 1) {
-      for (let i = 0; i < list.length; ++i) {
-      }
-    }else if (layer == 3) {
+      for (let i = 0; i < list.length; ++i) {}
+    } else if (layer == 3) {
       for (let i = 0; i < list.length; ++i) {
         if (list[i][0] == 37) list[i][1] += 2;
         if (list[i][0] == 38) list[i][1] += 2;
@@ -464,7 +463,6 @@ function develop(fuel, ammo, steel, baux, secretary, isitaly, hqlevel) {
       }
     }
   }
-
 
   //去除出率0
   for (let i = 0; i < list.length; ++i) {
