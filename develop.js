@@ -67,6 +67,9 @@ let developMap = [
   [61, 0, 0, 0, 0, 0, 0, 0, 0, 2],
   [65, 0, 0, 0, 4, 4, 0, 0, 0, 0],
   [66, 0, 0, 0, 4, 0, 0, 0, 0, 0],
+  [68, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [69, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [70, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   [72, 4, 0, 0, 0, 0, 0, 0, 0, 0],
   [73, 2, 0, 0, 0, 0, 0, 0, 0, 0],
   [74, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -83,9 +86,11 @@ let developMap = [
   [195, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   [197, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   [207, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [221, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   [242, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   [249, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   [250, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [445, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 ];
 
 let developList = [
@@ -148,7 +153,7 @@ function develop(fuel, ammo, steel, baux, secretary, isitaly, hqlevel) {
     max = baux;
   }
   let list = developList[secretary][layer].deepCopy();
-  //陆攻开发池
+  //九六陆攻开发池
   if (
     secretary == 2 &&
     (layer == 1 || layer == 3) &&
@@ -425,6 +430,41 @@ function develop(fuel, ammo, steel, baux, secretary, isitaly, hqlevel) {
       }
     }
   }
+
+  //神州丸 todo
+  if (isitaly == 116 && secretary == 2) {
+    if (layer == 0 || layer == 2) {
+      for (let i = 0; i < list.length; ++i) {
+        if (list[i][0] == 68) list[i][1] += 4;
+        if (list[i][0] == 37) list[i][1] += 4;
+        if (list[i][0] == 38) list[i][1] += 4;
+      }
+    } else if (layer == 1) {
+      for (let i = 0; i < list.length; ++i) {
+      }
+    }else if (layer == 3) {
+      for (let i = 0; i < list.length; ++i) {
+        if (list[i][0] == 37) list[i][1] += 2;
+        if (list[i][0] == 38) list[i][1] += 2;
+        if (list[i][0] == 69) list[i][1] += 4;
+        if (list[i][0] == 70) list[i][1] += 4;
+        if (list[i][0] == 221) list[i][1] += 6;
+        if (list[i][0] == 445) list[i][1] += 10;
+        if (list[i][0] == 17) list[i][1] -= 4;
+        if (list[i][0] == 22) list[i][1] -= 2;
+        if (list[i][0] == 25) list[i][1] -= 2;
+        if (list[i][0] == 26) list[i][1] -= 2;
+        if (list[i][0] == 52) list[i][1] -= 2;
+        if (list[i][0] == 54) list[i][1] -= 4;
+        if (list[i][0] == 55) list[i][1] -= 2;
+        if (list[i][0] == 57) list[i][1] -= 2;
+        if (list[i][0] == 60) list[i][1] -= 2;
+        if (list[i][0] == 61) list[i][1] -= 2;
+        if (list[i][0] == 35) list[i][1] -= 4;
+      }
+    }
+  }
+
 
   //去除出率0
   for (let i = 0; i < list.length; ++i) {

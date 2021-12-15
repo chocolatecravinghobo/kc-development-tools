@@ -54,16 +54,26 @@ function updateSim() {
   let secretary = parseInt($("#simd [name='secretary']")[0].value);
   if (secretary > 99) {
     isitaly = secretary;
-    if (isitaly == 100 || isitaly == 107 || isitaly == 108 || isitaly == 109|| isitaly == 112|| isitaly == 113|| isitaly == 114|| isitaly == 115) {
+    if (
+      isitaly == 100 ||
+      isitaly == 107 ||
+      isitaly == 108 ||
+      isitaly == 109 ||
+      isitaly == 112 ||
+      isitaly == 113 ||
+      isitaly == 114 ||
+      isitaly == 115
+    ) {
       secretary = 1;
-    } else if (isitaly == 101 || isitaly == 105|| isitaly == 111) {
+    } else if (isitaly == 101 || isitaly == 105 || isitaly == 111) {
       secretary = 0;
     } else if (
       isitaly == 102 ||
       isitaly == 103 ||
       isitaly == 104 ||
       isitaly == 106 ||
-      isitaly == 110
+      isitaly == 110 ||
+      isitaly == 116
     ) {
       secretary = 2;
     }
