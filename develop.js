@@ -438,9 +438,21 @@ function develop(fuel, ammo, steel, baux, secretary, isitaly, hqlevel) {
         if (list[i][0] == 68) list[i][1] += 4;
         if (list[i][0] == 37) list[i][1] += 4;
         if (list[i][0] == 38) list[i][1] += 4;
+        if (list[i][0] == 69) list[i][1] += 2;
+        if (list[i][0] == 70) list[i][1] += 2;
+        if (list[i][0] == 221) list[i][1] += 2;
+        if (list[i][0] == 445) list[i][1] += 2;
       }
     } else if (layer == 1) {
-      for (let i = 0; i < list.length; ++i) {}
+      for (let i = 0; i < list.length; ++i) {
+        if (list[i][0] == 68) list[i][1] += 2;
+        if (list[i][0] == 37) list[i][1] += 2;
+        if (list[i][0] == 38) list[i][1] += 2;
+        if (list[i][0] == 69) list[i][1] += 2;
+        if (list[i][0] == 70) list[i][1] += 2;
+        if (list[i][0] == 221) list[i][1] += 2;
+        if (list[i][0] == 445) list[i][1] += 2;
+      }
     } else if (layer == 3) {
       for (let i = 0; i < list.length; ++i) {
         if (list[i][0] == 37) list[i][1] += 2;
