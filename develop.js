@@ -431,27 +431,43 @@ function develop(fuel, ammo, steel, baux, secretary, isitaly, hqlevel) {
     }
   }
 
-  //あきつ丸,神州丸,宗谷特务舰 todo
+  //あきつ丸,神州丸,宗谷特务舰
   if (isitaly == 116 && secretary == 2) {
     if (layer == 0 || layer == 2) {
       for (let i = 0; i < list.length; ++i) {
         if (list[i][0] == 68) list[i][1] += 4;
         if (list[i][0] == 37) list[i][1] += 4;
         if (list[i][0] == 38) list[i][1] += 4;
-        if (list[i][0] == 69) list[i][1] += 2;
+        if (list[i][0] == 69) list[i][1] += 4;
         if (list[i][0] == 70) list[i][1] += 2;
         if (list[i][0] == 221) list[i][1] += 2;
-        if (list[i][0] == 445) list[i][1] += 2;
+        if (list[i][0] == 445) list[i][1] += 4;
+        if (list[i][0] == 21) list[i][1] -= 2;
+        if (list[i][0] == 181) list[i][1] -= 2;
+        if (list[i][0] == 25) list[i][1] -= 6;
+        if (list[i][0] == 26) list[i][1] -= 2;
+        if (list[i][0] == 41) list[i][1] -= 6;
+        if (list[i][0] == 33) list[i][1] -= 2;
+        if (list[i][0] == 34) list[i][1] -= 2;
+        if (list[i][0] == 29) list[i][1] -= 2;
       }
     } else if (layer == 1) {
       for (let i = 0; i < list.length; ++i) {
         if (list[i][0] == 68) list[i][1] += 2;
-        if (list[i][0] == 37) list[i][1] += 2;
+        if (list[i][0] == 37) list[i][1] += 4;
         if (list[i][0] == 38) list[i][1] += 2;
         if (list[i][0] == 69) list[i][1] += 2;
         if (list[i][0] == 70) list[i][1] += 2;
         if (list[i][0] == 221) list[i][1] += 2;
-        if (list[i][0] == 445) list[i][1] += 2;
+        if (list[i][0] == 445) list[i][1] += 6;
+        if (list[i][0] == 17) list[i][1] -= 4;
+        if (list[i][0] == 52) list[i][1] -= 2;
+        if (list[i][0] == 57) list[i][1] -= 2;
+        if (list[i][0] == 60) list[i][1] -= 2;
+        if (list[i][0] == 25) list[i][1] -= 4;
+        if (list[i][0] == 26) list[i][1] -= 2;
+        if (list[i][0] == 35) list[i][1] -= 4;
+        if (list[i][0] == 41) list[i][1] -= 2;
       }
     } else if (layer == 3) {
       for (let i = 0; i < list.length; ++i) {
