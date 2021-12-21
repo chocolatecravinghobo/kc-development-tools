@@ -416,7 +416,7 @@ function develop(fuel, ammo, steel, baux, secretary, isitaly, hqlevel) {
   if (isitaly == 115 && secretary == 1) {
     if (layer == 0 || layer == 2) {
       for (let i = 0; i < list.length; ++i) {
-        if (list[i][0] == 3) list[i][1] -= 2;
+        if (list[i][0] == 4) list[i][1] -= 2;
         if (list[i][0] == 11) list[i][1] -= 4;
         if (list[i][0] == 25) list[i][1] -= 2;
         if (list[i][0] == 65) list[i][1] -= 2;
@@ -455,7 +455,7 @@ function develop(fuel, ammo, steel, baux, secretary, isitaly, hqlevel) {
       for (let i = 0; i < list.length; ++i) {
         if (list[i][0] == 68) list[i][1] += 2;
         if (list[i][0] == 37) list[i][1] += 4;
-        if (list[i][0] == 38) list[i][1] += 2;
+        if (list[i][0] == 38) list[i][1] += 4;
         if (list[i][0] == 69) list[i][1] += 2;
         if (list[i][0] == 70) list[i][1] += 2;
         if (list[i][0] == 221) list[i][1] += 2;
