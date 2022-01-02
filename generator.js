@@ -196,7 +196,7 @@ function display() {
       }
       $("[name=hqlevel]")[0].value = this.input[3];
       updateSim();
-      $("[href=#sim]")[0].click();
+      $("[href='#sim']")[0].click();
     };
     head.appendChild(detail);
     div.appendChild(head);
