@@ -45,13 +45,13 @@ function createList() {
     item.appendChild(document.createTextNode(items[i][1]));
     item.className = "type" + (items[i][6] ? 4 : items[i][4]);
     item.title = "Require";
-    if (i == 59) item.title = "\nFuel ≥ 240\nAmmunition ≥ 260\nBauxite ≥ 250";
+    if (i == 75) item.title = "\nFuel ≥ 240\nAmmunition ≥ 260\nBauxite ≥ 250";
     else
       for (let j = 0; j < 4; ++j)
         if (items[i][5][j] > 0)
           item.title += "\n" + materialNames[j] + " ≥ " + items[i][5][j] * 10;
     if (items[i][3] > 0) item.title += "\nHQ Level ≥ " + items[i][3] * 10;
-    if (i == 44) item.title += "\nItalian Flagship";
+    // if (i == 44) item.title += "\nItalian Flagship";
     item.title = getString(item.title);
     item.onclick = select;
     item.index = i;
