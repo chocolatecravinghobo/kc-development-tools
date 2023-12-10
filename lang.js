@@ -310,6 +310,24 @@ let dict;
     $(function () {
       document.body.lang = "en";
     });
+    dict = {
+      "伊勢改,伊勢改二": "Ise Kai/K2",
+      "日向改,日向改二": "Hyuuga Kai/K2",
+      "秋月級": "Akizuki-class",
+      "阿賀野級": "Agano-class",
+      "比叡改二,比叡改二丙": "Hiei K2/C",
+      "神通改二": "Jintsuu K2",
+      "神風級": "Kamikaze-class",
+      "睦月級": "Mutsuki-class",
+      "吹雪級": "Fubuki-class",
+      "あきつ丸,神州丸 及其改造形态,宗谷特务舰": "Akitsu Maru, Shinshuu Maru (any forms); Souya(AGL form only)",
+      "川内改二": "Sendai K2",
+      "大淀": "Ooyodo",
+      "Nelson,Rodney": "Nelson-class",
+      "Kongou-class": "金剛級",
+      "天津風": "Amatsukaze",
+      "及其改造形态": "(any forms)",
+    };
   document.addEventListener("DOMContentLoaded", function () {
     let $cs = $(".i18n");
     for (let i = 0; i < $cs.length; ++i)
