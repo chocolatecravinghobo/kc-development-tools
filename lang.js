@@ -69,6 +69,8 @@ let dict;
       "Torpedo Family": "水雷系",
       "Gunboat Family": "炮舰系",
       "Carrier Family": "航母系",
+      "伊勢改,伊勢改二",:"伊势改,伊势改二"
+      "阿賀野",:"阿贺野"
       Require: "需要",
       "Min ": "最低",
       "No Result": "无结果",
@@ -161,6 +163,8 @@ let dict;
       "Torpedo Family": "水雷系",
       "Gunboat Family": "炮艦系",
       "Carrier Family": "航母系",
+      "伊勢改,伊勢改二",:"伊势改,伊势改二"
+      "阿賀野",:"阿贺野"
       Require: "需要",
       "Min ": "最低",
       "No Result": "無結果",
