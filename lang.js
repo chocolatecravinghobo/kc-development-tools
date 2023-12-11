@@ -119,7 +119,8 @@ let dict;
       "两栖登陆 & 运输",
       "陆基攻击机",
       "陆基战斗机",
-      "夜战支援",
+      "Miscellaneous",
+      "Submarine Torpedoes & Radar",
     ];
   } else if (lang == "zh-tw") {
     document.title = "艦隊Collection 開發工具";
@@ -213,7 +214,8 @@ let dict;
       "兩棲登陸 & 運輸",
       "陸基攻擊機",
       "陸基戰鬥機",
-      "夜戰支援",
+      "Miscellaneous",
+      "Submarine Torpedoes & Radar",
     ];
   } else if (lang == "ja") {
     document.title = "艦これ　装備開発ツール";
@@ -308,30 +310,31 @@ let dict;
       "上陸用舟艇 & 輸送",
       "陸上攻撃機",
       "陸軍戦闘機",
-      "夜戦装備",
+      "Miscellaneous",
+      "Submarine Torpedoes & Radar",
     ];
   } else
     $(function () {
       document.body.lang = "en";
     });
-    dict = {
-      "伊勢改,伊勢改二": "Ise Kai/K2",
-      "日向改,日向改二": "Hyuuga Kai/K2",
-      "秋月級": "Akizuki-class",
-      "阿賀野級": "Agano-class",
-      "比叡改二,比叡改二丙": "Hiei K2/C",
-      "神通改二": "Jintsuu K2",
-      "神風級": "Kamikaze-class",
-      "睦月級": "Mutsuki-class",
-      "吹雪級": "Fubuki-class",
-      "あきつ丸,神州丸 及其改造形态,宗谷特务舰": "Akitsu Maru, Shinshuu Maru (any forms); Souya(AGL form only)",
-      "川内改二": "Sendai K2",
-      "大淀": "Ooyodo",
-      "Nelson,Rodney": "Nelson-class",
-      "Kongou-class": "金剛級",
-      "天津風": "Amatsukaze",
-      "及其改造形态": "(any forms)",
-    };
+//    dict = {
+//      "伊勢改,伊勢改二": "Ise Kai/K2",
+//      "日向改,日向改二": "Hyuuga Kai/K2",
+//      "秋月級": "Akizuki-class",
+//      "阿賀野級": "Agano-class",
+//      "比叡改二,比叡改二丙": "Hiei K2/C",
+//      "神通改二": "Jintsuu K2",
+//      "神風級": "Kamikaze-class",
+//      "睦月級": "Mutsuki-class",
+//      "吹雪級": "Fubuki-class",
+//      "あきつ丸,神州丸 及其改造形态,宗谷特务舰": "Akitsu Maru, Shinshuu Maru (any forms); Souya(AGL form only)",
+//      "川内改二": "Sendai K2",
+//      "大淀": "Ooyodo",
+//      "Nelson,Rodney": "Nelson-class",
+//      "Kongou-class": "金剛級",
+//      "天津風": "Amatsukaze",
+//      "及其改造形态": "(any forms)",
+//    };
   document.addEventListener("DOMContentLoaded", function () {
     let $cs = $(".i18n");
     for (let i = 0; i < $cs.length; ++i)
