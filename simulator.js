@@ -62,10 +62,22 @@ function updateSim() {
       isitaly == 112 ||
       isitaly == 113 ||
       isitaly == 114 ||
-      isitaly == 115
+      isitaly == 115 || 
+      isitaly == 117 ||
+      isitaly == 119 ||
+      isitaly == 120 ||
+      //isitaly == 122 ||
+      isitaly == 124
     ) {
       secretary = 1;
-    } else if (isitaly == 101 || isitaly == 105 || isitaly == 111) {
+    } else if (
+      isitaly == 101 || 
+      isitaly == 105 || 
+      isitaly == 111 || 
+      isitaly == 118 || 
+      isitaly == 121 || 
+      isitaly == 123
+    ) {
       secretary = 0;
     } else if (
       isitaly == 102 ||
@@ -76,6 +88,11 @@ function updateSim() {
       isitaly == 116
     ) {
       secretary = 2;
+    } else if (
+      isitaly == 126 // ||
+      //isitaly == 125
+    ) {
+      secretary = 3;
     }
   }
   let result = develop(

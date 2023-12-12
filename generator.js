@@ -98,8 +98,8 @@ function updateGen() {
           }
         }
       }
-      for (let isitaly = 99; isitaly < 117; ++isitaly) {
-        //水雷
+      for (let isitaly = 99; isitaly < 127; ++isitaly) {
+        //水雷 Torpedo
         if (
           secretary != 1 &&
           (isitaly == 100 ||
@@ -109,16 +109,26 @@ function updateGen() {
             isitaly == 112 ||
             isitaly == 113 ||
             isitaly == 114 ||
-            isitaly == 115)
+            isitaly == 115 ||
+            isitaly == 117 ||
+            isitaly == 119 ||
+            isitaly == 120 ||
+            //isitaly == 122 ||
+            isitaly == 124)
         )
           continue;
-        //炮战
+        //炮战 Heavy
         if (
           secretary != 0 &&
-          (isitaly == 101 || isitaly == 105 || isitaly == 111)
+          (isitaly == 101 || 
+            isitaly == 105 || 
+            isitaly == 111 || 
+            isitaly == 118 || 
+            isitaly == 121 || 
+            isitaly == 123)
         )
           continue;
-        //航母
+        //航母 Aviation
         if (
           secretary != 2 &&
           (isitaly == 102 ||
@@ -128,6 +138,14 @@ function updateGen() {
             isitaly == 110||
             isitaly == 116)
         )
+        continue;
+      //Submarine
+      if (
+        secretary != 3 &&
+        (isitaly == 126 // ||
+        //isitaly == 125
+        )
+      )
           continue;
         let result = new analysis(
           selectedItems.slice(0),
